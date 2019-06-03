@@ -10,15 +10,24 @@ import kotlinx.coroutines.launch
 class PartidoViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: PartidoRepository
-    val allPartidos: LiveData<List<Partido>>
 
     init{
-        val partidosDao = PartidoRoomDatabase.getDatabase(application, viewModelScope).partidoDao()
-        repository = PartidoRepository(partidosDao)
-        allPartidos = repository.allPartidos
+        val partidoDao = PartidoRoomDatabase.getInstance(application).partidoDao()
+        repository=PartidoRepository(partidoDao)
     }
 
     fun insert(partido: Partido) = viewModelScope.launch(Dispatchers.IO){
         repository.insert(partido)
+    }
+
+    fun getAll(): LiveData<List<Partido>>{
+        return repository.getAll()
+    }
+    fun delete() = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete()
+    }
+
+    fun update(puntos1: Int, puntos2: Int, id: Int) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(puntos1, puntos2, id)
     }
 }
