@@ -33,12 +33,8 @@ class PartidoListAdapter(var partidos :List<Partido>): RecyclerView.Adapter<Part
 
         fun bind(partido: Partido) = with(itemView) {
 
-            /*var fecha = partido.date.get(Calendar.MONTH).plus(1).toString() + "/ " + partido.date.get(Calendar.DAY_OF_MONTH).toString() + " /" + partido.date.get(
-                Calendar.YEAR).toString()
-            var hora = partido.date.get(Calendar.HOUR).toString() + " : " + partido.date.get(Calendar.MINUTE).toString()
 
-            this.fecha.text = fecha
-            this.hora.text = hora*/
+            this.fecha.text = partido.date
             this.equipo1.text = partido.Equipo1
             this.equipo2.text = partido.Equipo2
             this.puntos1.text = partido.Puntos1.toString()

@@ -1,10 +1,13 @@
 package com.example.pdm_parcial1
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_new_partido.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NewPartidoActivity : AppCompatActivity() {
 
@@ -14,6 +17,7 @@ class NewPartidoActivity : AppCompatActivity() {
 
         clickListeners()
     }
+
     private fun Puntos(puntos1: Int, puntos2: Int){
         edit_score1.text = (edit_score1.text.toString().toInt() + puntos1).toString()
         edit_score2.text = (edit_score2.text.toString().toInt() + puntos2).toString()
@@ -45,8 +49,11 @@ class NewPartidoActivity : AppCompatActivity() {
             val puntos1 = edit_score1.text.toString().toInt()
             val puntos2 = edit_score2.text.toString().toInt()
 
+            val fecha= SimpleDateFormat("dd/MM/yyyy    HH:mm:ss", Locale.getDefault()).format(Date())
 
-            viewModel.insert(Partido(equipo1, equipo2, puntos1, puntos2))
+
+
+            viewModel.insert(Partido(equipo1, equipo2, puntos1, puntos2, fecha))
             this.finish()
         }
     }
