@@ -7,44 +7,49 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.recyclerview_item.view.*
+import java.util.*
 
-class PartidoListAdapter internal constructor(
-    context: Context
-) : RecyclerView.Adapter<PartidoListAdapter.PartidoViewHolder>(){
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var partidos = emptyList<Partido>()
-
-    inner class PartidoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var E1: TextView? = null
-        var E2: TextView? = null
-        var S1: TextView? = null
-        var S2: TextView? = null
-        init{
-            E1 = itemView.findViewById(R.id.team1)
-            E2 = itemView.findViewById(R.id.team2)
-            S1 = itemView.findViewById(R.id.score1)
-            S2 = itemView.findViewById(R.id.score2)
-        }
+class PartidoListAdapter(var partidos :List<Partido>): RecyclerView.Adapter<PartidoListAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartidoViewHolder {
-        val itemView = inflater.inflate(R.layout.recyclerview_item, parent, false)
-        return PartidoViewHolder(itemView)
-    }
+    override fun getItemCount(): Int = partidos.size
 
-    override fun onBindViewHolder(holder: PartidoViewHolder, position: Int) {
-        val current = partidos[position]
-        holder!!.E1!!.text = current.Equipo1
-        holder.E2!!.text = current.Equipo2
-        holder.S1!!.text = current.Puntos1.toString()
-        holder.S2!!.text = current.Puntos2.toString()
-    }
-
-    internal fun setPartidos(partidos: List<Partido>){
-        this.partidos = partidos
+    fun updateList(newMatches:List<Partido>){
+        this.partidos=newMatches
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int= partidos.size
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(partidos[position])
+    }
+
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        fun bind(partido: Partido) = with(itemView) {
+
+            var theDate = partido.date.get(Calendar.MONTH).plus(1).toString() + "/ " + partido.date.get(Calendar.DAY_OF_MONTH).toString() + " /" + partido.date.get(
+                Calendar.YEAR).toString()
+            var time = partido.date.get(Calendar.HOUR).toString() + " : " + partido.date.get(Calendar.MINUTE).toString()
+
+            this.fecha.text = theDate
+            this.hora.text = time
+            this.equipo1.text = partido.Equipo1
+            this.equipo2.text = partido.Equipo2
+            this.puntos1.text = partido.Puntos1.toString()
+            this.puntos2.text = partido.Puntos2.toString()
+            if(partido.Puntos1 > partido.Puntos2)
+                this.ganador.text = "Ganador: "+partido.Equipo1
+            else if(partido.Puntos1 < partido.Puntos2)
+                this.ganador.text = "Winner: "+partido.Equipo2
+            else
+                this.ganador.text = "EMPATE"
+        }
+
+    }
 }

@@ -6,4 +6,7 @@
     <string name="sampleName2">Equipo 2</string>
     <string name="sampleResult">0</string>
     <string name="gano">Ganador: </string>
+    <string name="tres">+3</string>
+    <string name="dos">+2</string>
+    <string name="uno">+1</string>
 </resources>

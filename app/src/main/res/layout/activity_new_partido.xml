@@ -6,33 +6,120 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="5">
+            android:orientation="vertical"
+            android:padding="@dimen/margin">
 
             <EditText
                     android:id="@+id/edit_team1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Equipo 1"
-                    android:layout_weight="2"/>
+                    android:textSize="@dimen/big_text"
+                    android:hint="@string/sampleName1"
+                    android:gravity="center_horizontal"/>
             <TextView
                     android:id="@+id/edit_score1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20dp"
-                android:layout_weight="4"/>
-            <Spinner
-                    android:id="@+id/spinner1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></Spinner>
-    </LinearLayout>
+                    android:text="@string/sampleResult"
+                    android:textSize="@dimen/big_text"
+                    android:gravity="center_horizontal"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/margin">
+                    <Button
+                            android:id="@+id/uno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/big_text"
+                            android:text="@string/uno"
+                            android:layout_weight="1"
+                            android:background="@color/orange"
+                            android:layout_marginRight="@dimen/margin"/>
+                    <Button
+                            android:id="@+id/dos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/big_text"
+                            android:text="@string/dos"
+                            android:layout_weight="1"
+                            android:background="@color/orange"
+                            android:layout_marginRight="@dimen/margin"/>
+                    <Button
+                            android:id="@+id/tres"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/big_text"
+                            android:text="@string/tres"
+                            android:layout_weight="1"
+                            android:background="@color/orange"/>
+            </LinearLayout>
 
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin">
+
+        <EditText
+                android:id="@+id/edit_team2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/big_text"
+                android:hint="@string/sampleName2"
+                android:gravity="center_horizontal"/>
+        <TextView
+                android:id="@+id/edit_score2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sampleResult"
+                android:textSize="@dimen/big_text"
+                android:gravity="center_horizontal"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin">
+            <Button
+                    android:id="@+id/uno2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/big_text"
+                    android:text="@string/uno"
+                    android:layout_weight="1"
+                    android:background="@color/orange"
+                    android:layout_marginRight="@dimen/margin"/>
+            <Button
+                    android:id="@+id/dos2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/big_text"
+                    android:text="@string/dos"
+                    android:layout_weight="1"
+                    android:background="@color/orange"
+                    android:layout_marginRight="@dimen/margin"/>
+            <Button
+                    android:id="@+id/tres2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/big_text"
+                    android:text="@string/tres"
+                    android:layout_weight="1"
+                    android:background="@color/orange"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 
     <Button
             android:id="@+id/button_final"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="Finalizar"/>
+            android:textSize="@dimen/big_text"
+            android:text="Finalizar"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_marginTop="@dimen/margin"/>
 
 </LinearLayout>
