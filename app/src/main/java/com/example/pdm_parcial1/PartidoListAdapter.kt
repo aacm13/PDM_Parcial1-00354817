@@ -33,20 +33,22 @@ class PartidoListAdapter(var partidos :List<Partido>): RecyclerView.Adapter<Part
 
         fun bind(partido: Partido) = with(itemView) {
 
-            var theDate = partido.date.get(Calendar.MONTH).plus(1).toString() + "/ " + partido.date.get(Calendar.DAY_OF_MONTH).toString() + " /" + partido.date.get(
+            /*var fecha = partido.date.get(Calendar.MONTH).plus(1).toString() + "/ " + partido.date.get(Calendar.DAY_OF_MONTH).toString() + " /" + partido.date.get(
                 Calendar.YEAR).toString()
-            var time = partido.date.get(Calendar.HOUR).toString() + " : " + partido.date.get(Calendar.MINUTE).toString()
+            var hora = partido.date.get(Calendar.HOUR).toString() + " : " + partido.date.get(Calendar.MINUTE).toString()
 
-            this.fecha.text = theDate
-            this.hora.text = time
+            this.fecha.text = fecha
+            this.hora.text = hora*/
             this.equipo1.text = partido.Equipo1
             this.equipo2.text = partido.Equipo2
             this.puntos1.text = partido.Puntos1.toString()
             this.puntos2.text = partido.Puntos2.toString()
+
+
             if(partido.Puntos1 > partido.Puntos2)
                 this.ganador.text = "Ganador: "+partido.Equipo1
             else if(partido.Puntos1 < partido.Puntos2)
-                this.ganador.text = "Winner: "+partido.Equipo2
+                this.ganador.text = "Ganador: "+partido.Equipo2
             else
                 this.ganador.text = "EMPATE"
         }
