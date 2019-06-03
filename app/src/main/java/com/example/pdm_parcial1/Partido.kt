@@ -5,15 +5,16 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.sql.Date
 import java.sql.Time
+import java.util.*
 
 @Entity(tableName = "partido_table")
 data class Partido (
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id") val id:Int,
     @ColumnInfo(name = "Equipo1") val Equipo1:String,
     @ColumnInfo(name = "Equipo2") val Equipo2:String,
     @ColumnInfo(name = "Puntos1") val Puntos1:Int,
     @ColumnInfo(name = "Puntos2") val Puntos2:Int,
-    @ColumnInfo(name = "date") val date: Date,
-    @ColumnInfo(name = "time") val time: Time
-)
+    @ColumnInfo(name = "fecha") val date: Calendar = Calendar.getInstance()
+){
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}

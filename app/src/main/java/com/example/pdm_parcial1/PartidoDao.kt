@@ -13,6 +13,9 @@ interface PartidoDao {
     @Insert
     suspend fun insert(word: Partido)
 
+    @Query("update partido_table set equipo1=:puntosEquipo1, equipo2=:puntosEquipo2 where id=:id")
+    suspend fun update(puntosEquipo1: Int, puntosEquipo2: Int, id: Int)
+
     @Query("delete from partido_table")
     fun deleteAll()
 }
